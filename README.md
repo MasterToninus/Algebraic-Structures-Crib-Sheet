@@ -12,3 +12,5 @@ A concise, pictorial table to aid in remembering elementary algebraic structures
 ## TODO
 
 - [] Ideals
+- [] Commutative, anticommutative, Lie, Leibiniz algebras
+- [] Lie Renihart
