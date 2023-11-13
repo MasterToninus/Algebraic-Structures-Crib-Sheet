@@ -1,0 +1,330 @@
+\documentclass[a4paper,12pt]{scrartcl}    %attenzione! uso scratctl che permette sottotitolo
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={185mm,277mm},
+ left=5mm,
+ right=5mm,
+ top=5mm,
+ bottom=5mm,
+ }
+
+
+%Per le Figure
+\usepackage[english]{babel}
+\usepackage{graphicx}
+
+\usepackage{amssymb}
+\usepackage[leqno]{amsmath}
+\usepackage{amsfonts}
+
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{cancel}
+\usepackage{fourier}
+\usepackage{mathtools}
+
+\usepackage{pifont} %tick checkmark
+\usepackage[symbol]{footmisc}
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+
+\usepackage{arydshln}
+
+\usepackage{pbox}
+
+%Common symbols
+\usepackage[all]{../src/toninus-math-symbols}
+\input{../src/TheoremTemplateToninus.tex}
+
+\usepackage{colortbl}%http://tex.stackexchange.com/questions/50349/color-only-a-cell-of-a-table
+\usepackage{multirow}
+
+\newcommand{\OpA}{\otimes}
+\newcommand{\OpB}{\oplus}
+
+\newcommand{\needed}{\cellcolor{green!25} needed}
+\newcommand{\unneeded}{ \cellcolor{red!25} unneeded}
+\newcommand{\xneeded}{\cellcolor{green!25} \ding{51}}
+\newcommand{\xunneeded}{ \cellcolor{red!25} \ding{55}}
+
+
+\usepackage{pdflscape}
+
+
+\begin{document}
+
+\begin{landscape}
+    \thispagestyle{empty}
+    \noindent
+
+
+%+------------------------------------------------------------------------------------+
+% |		Wip																			|
+%+------------------------------------------------------------------------------------+
+
+%  Titolo
+	\title{Prolegomena on (some) Abstact Algebra}
+	\subtitle{Elementary Algebraic structures zoology}
+	\author{Tony}
+	\date{\today}
+\maketitle
+
+	\begin{minipage}[c][\textheight]{0.30 \linewidth}
+	    \section{(WIP)Work in Progress}
+	    \mbox{}\\
+		\begin{itemize}
+			\item Fin qui, strutture algebriche dal punto di vista dell'algebra elementare. Mancano:
+				\begin{itemize}
+					\item Relazioni (c'è dualismo tra le relazioni e le mappe binarie: le seconde sono particolari relazioni mentre le primi formano strutture. eg: i reticoli formano un semigruppo
+					\item approccio diagrammatico alle relazioni.
+					\item punto di vista della \emph{universal algebra}
+				\end{itemize}
+			\item Gli spazi vettoriali vanno messi vicino ai moduli
+			\item le algebre sono su anello e su campo
+			\item Gli anelli sono un gruppo abeliano su cui agisce se stesso in modo non abeliano
+			\item i moduli sono un gruppo abeliano su cui agisce un anello
+			\item le algebre sono un p su cui agisce q
+			\item 
+		\end{itemize}	
+	\end{minipage}
+	%
+	\hspace{1cm}
+	%
+	\begin{minipage}[t][]{0.60 \linewidth}
+		%
+		\begin{minipage}[c]{0,5\textwidth}	
+			\begin{tabular}{|l|p{2cm}|} %Magma
+			  \hline
+			  \multicolumn{2}{c}{\cellcolor{yellow!25}Magma} \\
+			  \hline
+			   \cellcolor{blue!25} Closure&  \\
+			    \cellcolor{red!25} Associativity&  \\
+			    \cellcolor{red!25} Identity&  \\
+			    \cellcolor{red!25} Inverse&  \\
+			    \cellcolor{red!25} Commutativity&  \\
+			  \hline
+			\end{tabular}
+			\vfill
+			\begin{tabular}{|l|p{2cm}|} %Monoid
+			  \hline
+			  \multicolumn{2}{c}{\cellcolor{yellow!25}Monoid} \\
+			  \hline
+			   \cellcolor{blue!25} Closure&  \\
+			    \cellcolor{blue!25} Associativity&  \\
+			    \cellcolor{blue!25} Identity&  \\
+			    \cellcolor{red!25} Inverse&  \\
+			    \cellcolor{red!25} Commutativity&  \\
+			  \hline
+			\end{tabular}
+			\vfill
+			\begin{tabular}{|l|p{2cm}|} %Group
+			  \hline
+			  \multicolumn{2}{c}{\cellcolor{yellow!25}Group} \\
+			  \hline
+			   \cellcolor{blue!25} Closure&  \\
+			    \cellcolor{blue!25} Associativity&  \\
+			    \cellcolor{blue!25} Identity&  \\
+			    \cellcolor{blue!25} Inverse&  \\
+			    \cellcolor{red!25} Commutativity&  \\
+			  \hline
+			\end{tabular}
+		\end{minipage}
+		%
+		\hspace{1cm}
+		%
+		\begin{minipage}[c]{0,5\textwidth}	
+\begin{tabular}{|l|p{2cm}|} %SemiGroup
+			  \hline
+			  \multicolumn{2}{c}{\cellcolor{yellow!25}SemiGroup} \\
+			  \hline
+			   \cellcolor{blue!25} Closure&  \\
+			    \cellcolor{blue!25} Associativity&  \\
+			    \cellcolor{red!25} Identity&  \\
+			    \cellcolor{red!25} Inverse&  \\
+			    \cellcolor{red!25} Commutativity&  \\
+			  \hline
+			\end{tabular}
+			\vfill
+			\begin{tabular}{|l|p{2cm}|} %Commutative Monoid
+			  \hline
+			  \multicolumn{2}{c}{\cellcolor{yellow!25}Commutative Monoid} \\
+			  \hline
+			   \cellcolor{blue!25} Closure&  \\
+			    \cellcolor{blue!25} Associativity&  \\
+			    \cellcolor{blue!25} Identity&  \\
+			    \cellcolor{red!25} Inverse&  \\
+			    \cellcolor{blue!25} Commutativity&  \\
+			  \hline
+			\end{tabular}
+			\vfill
+			\begin{tabular}{|l|p{2cm}|} %Abelian Group
+			  \hline
+			  \multicolumn{2}{c}{\cellcolor{yellow!25}Abelian Group} \\
+			  \hline
+			   \cellcolor{blue!25} Closure&  \\
+			    \cellcolor{blue!25} Associativity&  \\
+			    \cellcolor{blue!25} Identity&  \\
+			    \cellcolor{blue!25} Inverse&  \\
+			    \cellcolor{blue!25} Commutativity&  \\
+			  \hline
+			\end{tabular}
+			\vfill
+		\end{minipage}
+		%
+	\end{minipage}	
+
+
+
+
+
+
+%-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+\newpage
+
+%+------------------------------------------------------------------------------------+
+% |		Relations																			|
+%+------------------------------------------------------------------------------------+
+\newpage
+	\begin{minipage}[t][]{0.30 \linewidth}
+	    \section*{Relations}
+	    \mbox{}\\
+		Consider a set $X$, a relation is a subset $\rho \subset X \times X$.
+		Consider $x,y \in X$ we say $x \rho y $ iff $(x,y)\in \rho$.
+		
+		Basics:
+		
+		
+		Diagram:
+			
+	\end{minipage}
+	%
+	\hspace{1cm}
+	%
+	\begin{minipage}[t][]{0.60 \linewidth}
+    	\begin{center}
+    	Depending on the properties satisfied by $\rho$, the subset is called:
+    	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+    		\hline
+    		& \rotatebox[origin=c]{90}{Relation} & \rotatebox[origin=c]{90}{Symmetric} & \rotatebox[origin=c]{90}{Antisymmetric} 
+    		& \rotatebox[origin=c]{90}{Transitive} & \rotatebox[origin=c]{90}{Reflexive} & \rotatebox[origin=c]{90}{Total ordered} 
+    		& \rotatebox[origin=c]{90}{Minimal Condition} & \rotatebox[origin=c]{90}{With lower bounds} & \rotatebox[origin=c]{90}{Complete} 
+    		& \rotatebox[origin=c]{90}{Univocal} & \rotatebox[origin=c]{90}{Everywhere defined} \\
+    		\hline
+    		Binary Relation & \xneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded  \\
+    		Equivalence & \xneeded & \xneeded & \xunneeded & \xneeded & \xneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded  \\
+    		Poset & \xneeded & \xunneeded & \xneeded & \xneeded & \xneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded  \\
+    		Total Order & \xneeded & \xunneeded & \xneeded & \xneeded & \xneeded & \xneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded  \\
+    		Lower Semilattice & \xneeded & \xunneeded & \xneeded & \xneeded & \xneeded & \xneeded & \xneeded & \xneeded & \xunneeded & \xunneeded & \xunneeded  \\
+    		Complete Semilattice & \xneeded & \xunneeded & \xneeded & \xneeded & \xneeded & \xneeded & \xneeded & \xneeded & \xneeded & \xunneeded & \xunneeded  \\
+    		Partial Map & \xneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded & \xneeded & \xunneeded  \\
+    		Function & \xneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded & \xunneeded & \xneeded & \xneeded  \\
+    		\hline
+    	\end{tabular}
+    	\end{center}
+    	\begin{minipage}[t][]{0.45 \linewidth}
+		%
+		\fbox{
+		  \parbox{\textwidth}{
+				\emph{Relation} 
+				\begin{equation}
+					\rho \in \mathcal{P}(X \times X ) \label{Relation}
+				\end{equation}
+		  }
+		}
+		\vfill
+		%
+		\fbox{
+		  \parbox{\textwidth}{
+				\emph{Symmetric} 
+				\begin{equation}
+					x \rho y \Rightarrow y \rho x  \label{Symmetric}
+				\end{equation}
+		  }
+		}
+		\vfill
+		%
+		\fbox{
+		  \parbox{\textwidth}{
+				\emph{AntiSymmetric} 
+				\begin{equation}
+					x \rho y \; \wedge y \rho x \Rightarrow x=y  \label{Antisymmetric}
+				\end{equation}
+		  }
+		}
+		\vfill
+		%
+		\fbox{
+		  \parbox{\textwidth}{
+				\emph{Transitive} 
+				\begin{equation}
+					x \rho y \; \wedge y \rho z \Rightarrow x \rho z  \label{Transitive}
+				\end{equation}
+		  }
+		}
+		\vfill
+		%
+		\fbox{
+		  \parbox{\textwidth}{
+				\emph{Reflexive} 
+				\begin{equation}
+					\forall x \in X \quad x \rho x \label{Reflexive}
+				\end{equation}
+		  }
+		}
+		\vfill
+		\end{minipage}
+		%
+		\hspace{1cm}
+		%		
+		\begin{minipage}[t][]{0.450 \linewidth}
+		\fbox{
+		  \parbox{\textwidth}{
+				\emph{Total Ordered} 
+				\begin{equation}
+					\forall x,y \in X \quad x \rho y \vee y \rho x \label{Totalorder}
+				\end{equation}
+		  }
+		}
+		\vfill
+		%
+		\fbox{
+		  \parbox{\textwidth}{
+				\emph{Minimal Condition} 
+				\begin{equation}
+					\forall Y \subset \rho (\neq \emptyset)  \exists a_I \textrm{minimal element} \label{MinimalCond}
+				\end{equation}
+				\begin{displaymath}
+					(\forall y \in Y) y \leq a_I \Rightarrow y = a_I
+				\end{displaymath}
+		  }
+		}
+		\vfill
+		%
+		\fbox{
+		  \parbox{\textwidth}{
+				\emph{Exists lower bound} 
+				\begin{equation}
+					\exists x\wedge y \forall x,y\in X\label{Lowerbound}
+				\end{equation}
+		  }
+		}
+		\vfill
+		%
+		\fbox{
+		  \parbox{\textwidth}{
+				\emph{Complete lower bound} 
+				\begin{equation}
+					\exists \bigwedge\{y : y \in Y\} \quad \forall Y \subset X \label{completeness}
+				\end{equation}
+		  }
+		}		
+		\vfill
+		\end{minipage}	
+	\end{minipage}
+	
+	\end{landscape}
+\end{document}

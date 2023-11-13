@@ -1,0 +1,765 @@
+\documentclass[a4paper,12pt]{scrartcl}    %attenzione! uso scratctl che permette sottotitolo
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={185mm,277mm},
+ left=5mm,
+ right=5mm,
+ top=5mm,
+ bottom=5mm,
+ }
+
+
+%Per le Figure
+\usepackage[english]{babel}
+\usepackage{graphicx}
+
+\usepackage{amssymb}
+\usepackage[leqno]{amsmath}
+\usepackage{amsfonts}
+
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{cancel}
+\usepackage{fourier}
+\usepackage{mathtools}
+
+\usepackage{pifont} %tick checkmark
+\usepackage[symbol]{footmisc}
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+
+\usepackage{arydshln}
+
+\usepackage{pbox}
+
+%Common symbols
+\usepackage[all]{./src/toninus-math-symbols}
+\input{./src/TheoremTemplateToninus.tex}
+
+\usepackage{colortbl}%http://tex.stackexchange.com/questions/50349/color-only-a-cell-of-a-table
+\usepackage{multirow}
+
+\newcommand{\OpA}{\otimes}
+\newcommand{\OpB}{\oplus}
+
+\newcommand{\needed}{\cellcolor{green!25} needed}
+\newcommand{\unneeded}{ \cellcolor{red!25} unneeded}
+\newcommand{\xneeded}{\cellcolor{green!25} \ding{51}}
+\newcommand{\xunneeded}{ \cellcolor{red!25} \ding{55}}
+
+
+\usepackage{pdflscape}
+
+%#########################################################################%
+\begin{document}
+%#########################################################################%
+
+%#########################################################################%
+
+\begin{landscape}
+
+%#########################################################################%
+
+    \thispagestyle{empty}
+    \noindent
+
+%=========================================================================#
+	\begin{minipage}[t][]{0.30 \linewidth}
+	    \section*{Single Operation structures (Group-Like)}
+	    \mbox{}\\
+		Consider a set $M$ and a binary operation, i.e. a function:
+		\begin{displaymath}
+			\OpA : M \times M \rightarrow M
+		\end{displaymath}
+		
+		Consider $X \subset M$.	
+		\vfill
+		\fbox{
+		  \parbox{\textwidth}{
+				\emph{$X$ is closed w.r.t. $\OpA$ (subgroup)} 
+				\begin{equation}\label{Totality}
+				\ran(\OpA \vert_X )\subset X \quad \textrm{i.e.} \quad	( x \OpA y ) \in X \qquad \forall x,y\in C
+				\end{equation}
+		  }
+		}
+		\vfill
+		\fbox{
+		  \parbox{\textwidth}{
+				\emph{(Ideal)} 
+				\begin{equation}\label{Totality}
+				X \OpA M \subset X \quad \textrm{i.e.} \quad	( x \OpA y ) \in X \qquad \forall x\in X, y \in M
+				\end{equation}
+		  }
+		}
+		\vfill
+	\end{minipage}
+	%
+	\hspace{1cm}
+	%
+	\begin{minipage}[t][]{0.60 \linewidth}
+    	\begin{center}
+    	Depending on the properties satisfied by $\OpA$, the pair $(M,\OpA)$ is called:
+    	\begin{tabular}{|c|c|c|c|c|c|}
+    		\hline
+    		& Totality & Associativity & Identity & Invertibility & Commutativity \\
+    		\hline
+    		Semicategory & \cellcolor{red!25} unneeded & \cellcolor{green!25} needed &  \cellcolor{red!25} unneeded &  \cellcolor{red!25} unneeded &  \cellcolor{red!25} unneeded \\
+    		Category & \cellcolor{red!25} unneeded & \cellcolor{green!25} needed &  \cellcolor{green!25} needed &  \cellcolor{red!25} unneeded &  \cellcolor{red!25} unneeded \\
+    		Groupoid & \cellcolor{red!25} unneeded & \cellcolor{green!25} needed &  \cellcolor{green!25} needed &  \cellcolor{green!25} needed &  \cellcolor{red!25} unneeded \\
+    		Magma & \cellcolor{green!25} needed & \cellcolor{red!25} unneeded &  \cellcolor{red!25} unneeded &  \cellcolor{red!25} unneeded &  \cellcolor{red!25} unneeded \\
+    		\href{https://it.wikipedia.org/wiki/Quasigruppo}{Quasi-Group} & \cellcolor{green!25} needed & \cellcolor{red!25} unneeded &  \cellcolor{red!25} unneeded &  \cellcolor{green!25} needed &  \cellcolor{red!25} unneeded \\
+    		Loop & \cellcolor{green!25} needed &\cellcolor{red!25} unneeded &  \cellcolor{green!25} needed &  \cellcolor{green!25} needed &  \cellcolor{red!25} unneeded \\
+    		Semigroup & \cellcolor{green!25} needed & \cellcolor{green!25} needed &  \cellcolor{red!25} unneeded &  \cellcolor{red!25} unneeded &  \cellcolor{red!25} unneeded \\
+    		Monoid & \cellcolor{green!25} needed & \cellcolor{green!25} needed &  \cellcolor{green!25} needed &  \cellcolor{red!25} unneeded &  \cellcolor{red!25} unneeded \\
+    		Group & \cellcolor{green!25} needed & \cellcolor{green!25} needed &  \cellcolor{green!25} needed &  \cellcolor{green!25} needed &  \cellcolor{red!25} unneeded \\
+    		Abelian Group & \cellcolor{green!25} needed & \cellcolor{green!25} needed &  \cellcolor{green!25} needed &  \cellcolor{green!25} needed &   \cellcolor{green!25} needed \\
+    		\hline
+    	\end{tabular}
+    	\end{center}
+		%
+		\fbox{
+		  \parbox{\textwidth}{
+				\emph{Total} 
+				\begin{equation}\label{Totality}
+					\dom(\OpA) = M \times M
+				\end{equation}
+		  }
+		}
+		\vfill
+		%
+		\fbox{
+		  \parbox{\textwidth}{
+				\emph{Associative}
+				\begin{equation}\label{Associativity}
+					(x \OpA y) \OpA z = x \OpA (y \OpA z) \qquad \forall x,y,z \in M
+				\end{equation}
+		  }
+		}
+		%
+		\vfill
+		\fbox{
+		  \parbox{\textwidth}{
+				\emph{Unital}
+				\begin{equation}\label{Identity}
+					\exists e \in M \quad : \quad e \OpA x = x \OpA e = x \quad \forall x \in M
+				\end{equation}
+				Such an element is unique, and thus one speaks of \emph{neutral element}.
+		  }
+		}
+		%
+		\vfill
+		\fbox{
+		  \parbox{\textwidth}{
+				\emph{Exists Inverse:}
+				\begin{equation}\label{Invertibility}
+					\forall a \in M \quad \exists b \in M \quad : \quad a \OpA b = b \OpA a = e
+				\end{equation}
+				where e is the neutral element and thus one speaks of \emph{identity element} .
+		  }
+		}
+		%
+		\vfill
+		\fbox{
+		  \parbox{\textwidth}{
+				\emph{Commutative}
+				\begin{equation}\label{Commutativity}
+					x \OpA y = y \OpA x \qquad \forall x,y\in M
+				\end{equation}
+		  }
+		}
+		\vfill			
+	\end{minipage}
+%=========================================================================#		
+		
+
+
+
+ 
+
+%=========================================================================#
+\newpage
+	\begin{minipage}[c][\textheight]{0.50 \linewidth}
+	    \section*{Double Operation Structure (Field-Like)}
+	    \mbox{}\\
+		%
+		Consider a set $R, A$ and two binary operation as above:
+		\begin{displaymath}
+				\OpA : R \times R \rightarrow R \qquad 	\OpB : R \times R \rightarrow R
+		\end{displaymath}
+		
+		Are defined some basic compatibility relations:
+		%
+		\vfill
+		\fbox{
+		  \parbox{\textwidth}{
+				\emph{$\OpA$ is \emph{Left distributivite} with respect to $\OpB$}
+			\begin{equation}\label{LeftDistributivity}
+				a \OpA ( b \OpB c) = (a \OpA b) \OpB (a \OpA c) \qquad \forall a,b,c \in R
+			\end{equation}
+		  }
+		}
+		%	
+		\vfill
+		\fbox{
+		  \parbox{\textwidth}{
+				\emph{$\OpA$ is \emph{Right distributivite} with respect to $\OpB$}
+			\begin{equation}\label{RightDistributivity}
+				( a \OpB b)\OpA c = (a \OpA c) \OpB (b \OpA c) \qquad \forall a,b,c \in R	
+			\end{equation}
+		  }
+		}
+		%			
+		
+
+		\begin{notationfix}
+			Mimicking the numeric fields we denote
+			\begin{tabular}{|c|c c|}
+				\hline 
+					& Neutral & Inverse \\
+				\hline
+				$\OpA$ & $\mathbb{1}$ & $(\cdot)^{-1}$\\
+				$\OpB$ & $\mathbb{O}$ & $-(\cdot)$\\
+				\hline
+			\end{tabular}
+		\end{notationfix}
+		
+		Basic properties following from the axioms:
+		\begin{itemize}
+			\item The additive identity, the additive inverse of each element, and the multiplicative identity are unique.
+			\item For any element $x$ in a ring $R$, one has $x 0 = 0 = 0x $ (zero is an \emph{absorbing element} with respect to multiplication) and $(-1)x = -x$.\\
+			(follows that invertibility w.r.t. multiplication can be imposed only on $a \neq =0$)
+			\item If $0 = 1$ in a ring $R$ (or more generally, 0 is a unit element), then $R$ has only one element, and is called the \emph{zero ring}.
+			\item Distributivity relations could be regarded as linear action of $(R, \OpB)$ on $(R, \OpA)$.
+		\end{itemize}
+		
+		
+				Depending on the properties satisfied by $\OpA,\OpB$, the triple $(M,\OpA,\OpB)$ is called:
+
+		\vfill
+	\end{minipage}
+	%
+	\hspace{1cm}
+	%
+	\begin{minipage}[t][]{0.50 \linewidth}
+	
+		%
+		\begin{minipage}[c]{0.40 \textwidth}	
+			\begin{tabular}{|l|c|} %Field
+			  \hline
+			  \multicolumn{2}{c}{\cellcolor{green!25}Field} \\
+			  \hline
+			    \cellcolor{blue!25} Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} Commutativity& 
+			    \parbox[t]{2mm}{\multirow{-5}{*}{\rotatebox[origin=c]{90}{\cellcolor{yellow!25}\tiny Abelian Group $\big(\OpB\big)$}}}\\
+			   \hline
+			    \cellcolor{blue!25} Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{orange!25} Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} Commutativity& 
+			    \parbox[t]{2mm}{\multirow{-5}{*}{\rotatebox[origin=c]{90}{\cellcolor{yellow!25}\tiny Abelian Group $\big(\OpA\big)$}}}\\
+			  \hline
+			    \cellcolor{blue!25} Left Distributivity&  \tiny\cellcolor{yellow!25}Distributivity\\
+			    \cellcolor{blue!25} Right Distributivity & \tiny\cellcolor{yellow!25} $\big(\OpA\big)$ w.r.t. $\big(\OpB\big)$  \\
+			   \hline
+			\end{tabular}
+			\vfill
+			\begin{tabular}{|l|c|} %Ring
+			  \hline
+			  \multicolumn{2}{c}{\cellcolor{green!25}Ring} \\
+			  \hline
+			    \cellcolor{blue!25} Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} Commutativity& 
+			   	\parbox[t]{2mm}{\multirow{-5}{*}{\rotatebox[origin=c]{90}{\cellcolor{yellow!25}\tiny Abelian Group $\big(\OpB\big)$}}}\\
+			   \hline
+			    \cellcolor{blue!25} Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{red!25} Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{red!25} Commutativity& 
+			    \parbox[t]{2mm}{\multirow{-5}{*}{\rotatebox[origin=c]{90}{\cellcolor{yellow!25}\tiny Monoid $\big(\OpA\big)$}}}\\		    
+			  \hline    
+				\cellcolor{blue!25} Left Distributivity&  \tiny\cellcolor{yellow!25}Distributivity\\
+			    \cellcolor{blue!25} Right Distributivity & \tiny\cellcolor{yellow!25} $\big(\OpA\big)$ w.r.t. $\big(\OpB\big)$  \\
+			   \hline
+			\end{tabular}
+			\vfill
+			\begin{tabular}{|l|c|} %Pseudo-Ring
+			  \hline
+			  \multicolumn{2}{c}{\cellcolor{green!25}Pseudo-Ring} \\
+			  \hline
+			    \cellcolor{blue!25} Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} Commutativity& 
+			    \parbox[t]{2mm}{\multirow{-5}{*}{\rotatebox[origin=c]{90}{\cellcolor{yellow!25}\tiny Abelian Group $\big(\OpB\big)$}}}\\
+			   \hline
+			    \cellcolor{blue!25} Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{red!25} Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{red!25} Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{red!25} Commutativity& 
+			    \parbox[t]{2mm}{\multirow{-5}{*}{\rotatebox[origin=c]{90}{\cellcolor{yellow!25}\tiny SemiGroup $\big(\OpA\big)$}}}\\			    
+			  \hline
+			  	\cellcolor{blue!25} Left Distributivity&  \tiny\cellcolor{yellow!25}Distributivity\\
+			    \cellcolor{blue!25} Right Distributivity & \tiny\cellcolor{yellow!25} $\big(\OpA\big)$ w.r.t. $\big(\OpB\big)$  \\
+			   \hline
+			\end{tabular}
+		\end{minipage}
+		%
+		\hspace{0.25cm}
+		%
+		\begin{minipage}[c]{0,5\textwidth}	
+			\begin{tabular}{|l|c|} %Commutative Ring
+			  \hline
+			  \multicolumn{2}{c}{\cellcolor{green!25}Commutative Ring} \\
+			  \hline
+			    \cellcolor{blue!25} Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} Commutativity& 
+			    \parbox[t]{2mm}{\multirow{-5}{*}{\rotatebox[origin=c]{90}{\cellcolor{yellow!25}\tiny Abelian Group $\big(\OpB\big)$}}}\\
+			   \hline
+			    \cellcolor{blue!25} Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{red!25} Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} Commutativity& 
+			    \parbox[t]{2mm}{\multirow{-5}{*}{\rotatebox[origin=c]{90}{\cellcolor{yellow!25}\tiny Commutative Monoid $\big(\OpA\big)$}}} \\
+			  \hline
+			  	\cellcolor{blue!25} Left Distributivity&  \tiny\cellcolor{yellow!25}Distributivity\\
+			    \cellcolor{blue!25} Right Distributivity & \tiny\cellcolor{yellow!25} $\big(\OpA\big)$ w.r.t. $\big(\OpB\big)$  \\
+			   \hline
+			\end{tabular}
+			\vfill
+			\begin{tabular}{|l|c|} %Semi-Ring
+			  \hline
+			  \multicolumn{2}{c}{\cellcolor{green!25}Semi-Ring} \\
+			  \hline
+			    \cellcolor{blue!25} Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{red!25} Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} Commutativity& 
+			    \parbox[t]{2mm}{\multirow{-5}{*}{\rotatebox[origin=c]{90}{\cellcolor{yellow!25}\tiny Commutative Monoid $\big(\OpB\big)$}}} \\
+			   \hline
+			    \cellcolor{blue!25} Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{red!25} Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{red!25} Commutativity&
+			    \parbox[t]{2mm}{\multirow{-5}{*}{\rotatebox[origin=c]{90}{\cellcolor{yellow!25}\tiny Monoid $\big(\OpA\big)$}}} \\
+			  \hline
+			  	\cellcolor{blue!25} Left Distributivity&  \tiny\cellcolor{yellow!25}Distributivity\\
+			    \cellcolor{blue!25} Right Distributivity & \tiny\cellcolor{yellow!25} $\big(\OpA\big)$ w.r.t. $\big(\OpB\big)$  \\
+			   \hline
+			\end{tabular}
+			\vfill
+			\begin{tabular}{|l|c|} %Commutative Semi-Ring
+			  \hline
+			  \multicolumn{2}{c}{\cellcolor{green!25}Commutative Semi-Ring} \\
+			  \hline
+			    \cellcolor{blue!25} Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{red!25} Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} Commutativity& 
+			    \parbox[t]{2mm}{\multirow{-5}{*}{\rotatebox[origin=c]{90}{\cellcolor{yellow!25}\tiny Commutative Monoid $\big(\OpB\big)$}}} \\
+			   \hline
+			    \cellcolor{blue!25} Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{red!25} Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} Commutativity& 
+			    \parbox[t]{2mm}{\multirow{-5}{*}{\rotatebox[origin=c]{90}{\cellcolor{yellow!25}\tiny Commutative Monoid $\big(\OpA\big)$}}} \\
+			  \hline
+			  	\cellcolor{blue!25} Left Distributivity&  \tiny\cellcolor{yellow!25}Distributivity\\
+			    \cellcolor{blue!25} Right Distributivity & \tiny\cellcolor{yellow!25} $\big(\OpA\big)$ w.r.t. $\big(\OpB\big)$  \\
+			   \hline
+			\end{tabular}
+			\vfill
+		\end{minipage}
+		%
+	\end{minipage}	
+%=========================================================================#	
+
+%=========================================================================#	
+\newpage
+
+TODO
+%=========================================================================#
+
+
+
+%=========================================================================#
+\newpage
+	\begin{minipage}[c][\textheight]{0.30 \linewidth}
+	    \section*{Structures over a Field (Vector Space Like) MODULE!}
+	    \mbox{}\\
+			Be $\KField$ a field, we call a \emph{scalar multiplication} over the set $V$ the function:
+				\begin{displaymath}
+					\cdot : \KField \cdot V \rightarrow  V \qquad (\lambda, \mathbf{v}) \mapsto \lambda \mathbf{v} \quad \forall \lambda \in \KField,\; 
+					\forall \mathbf{v} \in V
+				\end{displaymath}
+			
+			Let be $(V, \clubsuit)$ a magma endowed with a scalar multiplication over field $\KField$.
+			Are defined some basic compatibility  Relation:
+			\begin{itemize}
+			\item \emph{Compatibility of scalar multiplication} :
+				\begin{equation}\label{scalarmulti}
+					a ( b \mathbf{v} ) = ab (\mathbf{v}) \qquad \forall a,b \in \KField,\: \forall \mathbf{v} \in V
+				\end{equation}
+			\item \emph{Compatibility of scalar multiplication} w.r.t. $\OpA$:
+				\begin{equation}\label{scalarcompat}
+					 (a \mathbf{v} ) \OpA (b \mathbf{u)}= (ab) (\mathbf{v}\OpA \mathbf{u}) \qquad 
+					 \forall a,b \in \KField,\: \forall \mathbf{v},\mathbf{u} \in V
+				\end{equation}
+			\item \emph{Identity element of scalar multiplication}:
+				\begin{equation}\label{scalaridentity}
+					1 \mathbf{v} = \mathbf{v}  \qquad 1 \textrm{identity element in $\KField$}
+				\end{equation}
+			\item \emph{Distributivity of scalar multiplication} w.r.t $\OpB$:
+				\begin{equation}\label{scalarDistributivityA}
+					a ( \mathbf{u} \OpB \mathbf{v} ) = a \mathbf{u} \OpB a \mathbf{v} \qquad \forall a \in\KField,\: \forall \mathbf{u},\mathbf{v}\in V
+				\end{equation}
+			\item \emph{Distributivity of scalar multiplication with respect to field addition}:
+				\begin{equation}\label{scalarDistributivityB}
+					(a +b ) \mathbf{v} = a  \mathbf{v}  \OpB  b \mathbf{v}
+				\end{equation}
+			\end{itemize}
+			
+			Depending on the properties satisfied by $\OpA,\OpB$, the triple $(M,\OpA,\OpB)$ is called:
+		\vfill
+	\end{minipage}
+	%
+	\hspace{1cm}
+	%
+	\begin{minipage}[t][]{0.60 \linewidth}
+		%
+		\begin{minipage}[c]{0,5\textwidth}	
+			\begin{tabular}{|l|c|} %Vector Space
+			  \hline
+			  \multicolumn{2}{c}{\cellcolor{green!25}Vector Space} \\
+			  \hline
+			    \cellcolor{blue!25} \footnotesize Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} \footnotesize Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} \footnotesize Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} \footnotesize Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} \footnotesize Commutativity& \multirow{-5}{*}{\tiny\cellcolor{yellow!25}Abelian Group$\big(\OpB\big)$} \\
+			   \hline
+			    \cellcolor{red!25} \footnotesize Closure& \cellcolor{red!25}  \\
+			    \cellcolor{red!25} \footnotesize Associativity& \cellcolor{red!25}  \\
+			    \cellcolor{red!25} \footnotesize Identity& \cellcolor{red!25} \\
+			    \cellcolor{red!25} \footnotesize Inverse& \cellcolor{red!25} \\
+			    \cellcolor{red!25} \footnotesize Commutativity& \multirow{-5}{*}{\tiny\cellcolor{red!25} No $\big(\OpA\big)$} \\
+			  \hline
+			  	\cellcolor{red!25} \footnotesize Left Distributivity&  \tiny\cellcolor{red!25}Distributivity\\
+			    \cellcolor{red!25} \footnotesize Right Distributivity & \tiny\cellcolor{red!25} $\big(\OpA\big)$ w.r.t. $\big(\OpB\big)$  \\
+			   \hline
+			  \hline
+			     \cellcolor{blue!25} \footnotesize SP Multiplication (\ref{scalarmulti})&  \tiny\cellcolor{yellow!25}Scalar Product\\
+			    \cellcolor{blue!25} \footnotesize SP Identity(\ref{scalaridentity}) & \tiny\cellcolor{yellow!25} Compatibility  \\
+			   \hline 
+			    \cellcolor{blue!25} \footnotesize Distributivity w.r.t. $\OpA$ (\ref{scalarDistributivityA})&  \tiny\cellcolor{yellow!25}Scalar Product\\
+			    \cellcolor{blue!25} \footnotesize Distributivity w.r.t.$\OpB$ (\ref{scalarDistributivityB}) & \tiny\cellcolor{yellow!25} distributivity w.r.t. $\big(\OpB\big)$  \\
+			   \hline
+			    \multicolumn{2}{l}{\footnotesize \cellcolor{red!25} Scalar Multiplication Compatibility w.r.t  $\big(\OpA\big)$ (\ref{scalarcompat})}\\
+			   \hline
+			\end{tabular}
+			\vfill
+			\begin{tabular}{|l|c|} %Associative Algebra over Field
+			  \hline
+			  \multicolumn{2}{c}{\cellcolor{green!25}Associative Algebra over $\KField$} \\
+			  \hline
+			    \cellcolor{blue!25} \footnotesize Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} \footnotesize Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} \footnotesize Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} \footnotesize Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} \footnotesize Commutativity& \multirow{-5}{*}{\tiny\cellcolor{yellow!25}Abelian Group$\big(\OpB\big)$} \\
+			   \hline
+			    \cellcolor{blue!25} \footnotesize Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} \footnotesize Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{red!25} \footnotesize Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{red!25} \footnotesize Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{red!25} \footnotesize Commutativity& \multirow{-5}{*}{\tiny\cellcolor{yellow!25} SemiGroup $\big(\OpA\big)$} \\
+			  \hline
+			  	\cellcolor{blue!25} \footnotesize Left Distributivity&  \tiny\cellcolor{yellow!25}Distributivity\\
+			    \cellcolor{blue!25} \footnotesize Right Distributivity & \tiny\cellcolor{yellow!25} $\big(\OpA\big)$ w.r.t. $\big(\OpB\big)$  \\
+			   \hline
+			  \hline
+			     \cellcolor{blue!25} \footnotesize SP Multiplication (\ref{scalarmulti})&  \tiny\cellcolor{yellow!25}Scalar Product\\
+			    \cellcolor{blue!25} \footnotesize SP Identity(\ref{scalaridentity}) & \tiny\cellcolor{yellow!25} Compatibility  \\
+			   \hline 
+			    \cellcolor{blue!25} \footnotesize Distributivity w.r.t. $\OpA$ (\ref{scalarDistributivityA})&  \tiny\cellcolor{yellow!25}Scalar Product\\
+			    \cellcolor{blue!25} \footnotesize Distributivity w.r.t.$\OpB$ (\ref{scalarDistributivityB}) & \tiny\cellcolor{yellow!25} distributivity w.r.t. $\big(\OpB\big)$  \\
+			   \hline
+			    \multicolumn{2}{l}{\footnotesize \cellcolor{blue!25} Scalar Multiplication Compatibility w.r.t  $\big(\OpA\big)$ (\ref{scalarcompat})}\\
+			   \hline
+			\end{tabular}
+			\vfill
+		\end{minipage}
+		%
+		\hspace{1cm}
+		%
+		\begin{minipage}[c]{0,5\textwidth}	
+			\begin{tabular}{|l|c|} %Algebra over Field
+			  \hline
+			  \multicolumn{2}{c}{\cellcolor{green!25}Algebra over Field $\KField$} \\
+			  \hline
+			    \cellcolor{blue!25} \footnotesize Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} \footnotesize Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} \footnotesize Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} \footnotesize Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} \footnotesize Commutativity& \multirow{-5}{*}{\tiny\cellcolor{yellow!25}Abelian Group$\big(\OpB\big)$} \\
+			   \hline
+			    \cellcolor{blue!25} \footnotesize Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{red!25} \footnotesize Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{red!25} \footnotesize Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{red!25} \footnotesize Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{red!25} \footnotesize Commutativity& \multirow{-5}{*}{\tiny\cellcolor{yellow!25} Magma $\big(\OpA\big)$} \\
+			  \hline
+			  	\cellcolor{blue!25} \footnotesize Left Distributivity&  \tiny\cellcolor{yellow!25}Distributivity\\
+			    \cellcolor{blue!25} \footnotesize Right Distributivity & \tiny\cellcolor{yellow!25} $\big(\OpA\big)$ w.r.t. $\big(\OpB\big)$  \\
+			   \hline
+			  \hline
+			     \cellcolor{blue!25} \footnotesize SP Multiplication (\ref{scalarmulti})&  \tiny\cellcolor{yellow!25}Scalar Product\\
+			    \cellcolor{blue!25} \footnotesize SP Identity(\ref{scalaridentity}) & \tiny\cellcolor{yellow!25} Compatibility  \\
+			   \hline 
+			    \cellcolor{blue!25} \footnotesize Distributivity w.r.t. $\OpA$ (\ref{scalarDistributivityA})&  \tiny\cellcolor{yellow!25}Scalar Product\\
+			    \cellcolor{blue!25} \footnotesize Distributivity w.r.t.$\OpB$ (\ref{scalarDistributivityB}) & \tiny\cellcolor{yellow!25} distributivity w.r.t. $\big(\OpB\big)$  \\
+			   \hline
+			    \multicolumn{2}{l}{\footnotesize \cellcolor{blue!25} Scalar Multiplication Compatibility w.r.t  $\big(\OpA\big)$ (\ref{scalarcompat})}\\
+			   \hline
+			\end{tabular}
+			\vfill
+			\begin{tabular}{|l|c|} %Unital Algebra over Field
+			  \hline
+			  \multicolumn{2}{c}{\cellcolor{green!25}Unital Algebra over $\KField$} \\
+			  \hline
+			    \cellcolor{blue!25} \footnotesize Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} \footnotesize Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} \footnotesize Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} \footnotesize Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} \footnotesize Commutativity& \multirow{-5}{*}{\tiny\cellcolor{yellow!25}Abelian Group$\big(\OpB\big)$} \\
+			   \hline
+			    \cellcolor{blue!25} \footnotesize Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} \footnotesize Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} \footnotesize Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{red!25} \footnotesize Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{red!25} \footnotesize Commutativity& \multirow{-5}{*}{\tiny\cellcolor{yellow!25} Monoid $\big(\OpA\big)$} \\
+			  \hline
+			  	\cellcolor{blue!25} \footnotesize Left Distributivity&  \tiny\cellcolor{yellow!25}Distributivity\\
+			    \cellcolor{blue!25} \footnotesize Right Distributivity & \tiny\cellcolor{yellow!25} $\big(\OpA\big)$ w.r.t. $\big(\OpB\big)$  \\
+			   \hline
+			  \hline
+			     \cellcolor{blue!25} \footnotesize SP Multiplication (\ref{scalarmulti})&  \tiny\cellcolor{yellow!25}Scalar Product\\
+			    \cellcolor{blue!25} \footnotesize SP Identity(\ref{scalaridentity}) & \tiny\cellcolor{yellow!25} Compatibility  \\
+			   \hline 
+			    \cellcolor{blue!25} \footnotesize Distributivity w.r.t.$\OpA$ (\ref{scalarDistributivityA})&  \tiny\cellcolor{yellow!25}Scalar Product\\
+			    \cellcolor{blue!25} \footnotesize Distributivity w.r.t.$\OpB$ (\ref{scalarDistributivityB}) & \tiny\cellcolor{yellow!25} distributivity w.r.t. $\big(\OpB\big)$  \\
+			   \hline
+			    \multicolumn{2}{l}{\footnotesize \cellcolor{blue!25} Scalar Multiplication Compatibility w.r.t  $\big(\OpA\big)$ (\ref{scalarcompat})}\\
+			   \hline
+			\end{tabular}
+			\vfill
+		\end{minipage}
+		%
+	\end{minipage}	
+%=========================================================================#
+
+
+%=========================================================================#
+\newpage
+	\begin{minipage}[c][\textheight]{0.30 \linewidth}
+	    \section*{Structure over Vector fields (Algebras over Ring)}
+	    \mbox{}\\
+			Be $\KField$ a field, we call a \emph{scalar multiplication} over the set $V$ the function:
+				\begin{displaymath}
+					\cdot : \KField \cdot V \rightarrow  V \qquad (\lambda, \mathbf{v}) \mapsto \lambda \mathbf{v} \quad \forall \lambda \in \KField,\; 
+					\forall \mathbf{v} \in V
+				\end{displaymath}
+			
+			Let be $(V, \clubsuit)$ a magma endowed with a scalar multiplication over field $\KField$.
+			Are defined some basic compatibility  Relation:
+			\begin{itemize}
+			\item \emph{Compatibility of scalar multiplication} :
+				\begin{equation}\label{scalarmulti}
+					a ( b \mathbf{v} ) = ab (\mathbf{v}) \qquad \forall a,b \in \KField,\: \forall \mathbf{v} \in V
+				\end{equation}
+			\item \emph{Compatibility of scalar multiplication} w.r.t. $\OpA$:
+				\begin{equation}\label{scalarcompat}
+					 (a \mathbf{v} ) \OpA (b \mathbf{u)}= (ab) (\mathbf{v}\OpA \mathbf{u}) \qquad 
+					 \forall a,b \in \KField,\: \forall \mathbf{v},\mathbf{u} \in V
+				\end{equation}
+			\item \emph{Identity element of scalar multiplication}:
+				\begin{equation}\label{scalaridentity}
+					1 \mathbf{v} = \mathbf{v}  \qquad 1 \textrm{identity element in $\KField$}
+				\end{equation}
+			\item \emph{Distributivity of scalar multiplication} w.r.t $\OpB$:
+				\begin{equation}\label{scalarDistributivityA}
+					a ( \mathbf{u} \OpB \mathbf{v} ) = a \mathbf{u} \OpB a \mathbf{v} \qquad \forall a \in\KField,\: \forall \mathbf{u},\mathbf{v}\in V
+				\end{equation}
+			\item \emph{Distributivity of scalar multiplication with respect to field addition}:
+				\begin{equation}\label{scalarDistributivityB}
+					(a +b ) \mathbf{v} = a  \mathbf{v}  \OpB  b \mathbf{v}
+				\end{equation}
+			\end{itemize}
+			
+			Depending on the properties satisfied by $\OpA,\OpB$, the triple $(M,\OpA,\OpB)$ is called:
+		\vfill
+	\end{minipage}
+	%
+	\hspace{1cm}
+	%
+	\begin{minipage}[t][]{0.60 \linewidth}
+		%
+		\begin{minipage}[c]{0,5\textwidth}	
+			\begin{tabular}{|l|c|} %Vector Space
+			  \hline
+			  \multicolumn{2}{c}{\cellcolor{green!25}Vector Space} \\
+			  \hline
+			    \cellcolor{blue!25} \footnotesize Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} \footnotesize Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} \footnotesize Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} \footnotesize Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} \footnotesize Commutativity& \multirow{-5}{*}{\tiny\cellcolor{yellow!25}Abelian Group$\big(\OpB\big)$} \\
+			   \hline
+			    \cellcolor{red!25} \footnotesize Closure& \cellcolor{red!25}  \\
+			    \cellcolor{red!25} \footnotesize Associativity& \cellcolor{red!25}  \\
+			    \cellcolor{red!25} \footnotesize Identity& \cellcolor{red!25} \\
+			    \cellcolor{red!25} \footnotesize Inverse& \cellcolor{red!25} \\
+			    \cellcolor{red!25} \footnotesize Commutativity& \multirow{-5}{*}{\tiny\cellcolor{red!25} No $\big(\OpA\big)$} \\
+			  \hline
+			  	\cellcolor{red!25} \footnotesize Left Distributivity&  \tiny\cellcolor{red!25}Distributivity\\
+			    \cellcolor{red!25} \footnotesize Right Distributivity & \tiny\cellcolor{red!25} $\big(\OpA\big)$ w.r.t. $\big(\OpB\big)$  \\
+			   \hline
+			  \hline
+			     \cellcolor{blue!25} \footnotesize SP Multiplication (\ref{scalarmulti})&  \tiny\cellcolor{yellow!25}Scalar Product\\
+			    \cellcolor{blue!25} \footnotesize SP Identity(\ref{scalaridentity}) & \tiny\cellcolor{yellow!25} Compatibility  \\
+			   \hline 
+			    \cellcolor{blue!25} \footnotesize Distributivity w.r.t. $\OpA$ (\ref{scalarDistributivityA})&  \tiny\cellcolor{yellow!25}Scalar Product\\
+			    \cellcolor{blue!25} \footnotesize Distributivity w.r.t.$\OpB$ (\ref{scalarDistributivityB}) & \tiny\cellcolor{yellow!25} distributivity w.r.t. $\big(\OpB\big)$  \\
+			   \hline
+			    \multicolumn{2}{l}{\footnotesize \cellcolor{red!25} Scalar Multiplication Compatibility w.r.t  $\big(\OpA\big)$ (\ref{scalarcompat})}\\
+			   \hline
+			\end{tabular}
+			\vfill
+			\begin{tabular}{|l|c|} %Associative Algebra over Field
+			  \hline
+			  \multicolumn{2}{c}{\cellcolor{green!25}Associative Algebra over $\KField$} \\
+			  \hline
+			    \cellcolor{blue!25} \footnotesize Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} \footnotesize Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} \footnotesize Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} \footnotesize Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} \footnotesize Commutativity& \multirow{-5}{*}{\tiny\cellcolor{yellow!25}Abelian Group$\big(\OpB\big)$} \\
+			   \hline
+			    \cellcolor{blue!25} \footnotesize Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} \footnotesize Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{red!25} \footnotesize Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{red!25} \footnotesize Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{red!25} \footnotesize Commutativity& \multirow{-5}{*}{\tiny\cellcolor{yellow!25} SemiGroup $\big(\OpA\big)$} \\
+			  \hline
+			  	\cellcolor{blue!25} \footnotesize Left Distributivity&  \tiny\cellcolor{yellow!25}Distributivity\\
+			    \cellcolor{blue!25} \footnotesize Right Distributivity & \tiny\cellcolor{yellow!25} $\big(\OpA\big)$ w.r.t. $\big(\OpB\big)$  \\
+			   \hline
+			  \hline
+			     \cellcolor{blue!25} \footnotesize SP Multiplication (\ref{scalarmulti})&  \tiny\cellcolor{yellow!25}Scalar Product\\
+			    \cellcolor{blue!25} \footnotesize SP Identity(\ref{scalaridentity}) & \tiny\cellcolor{yellow!25} Compatibility  \\
+			   \hline 
+			    \cellcolor{blue!25} \footnotesize Distributivity w.r.t. $\OpA$ (\ref{scalarDistributivityA})&  \tiny\cellcolor{yellow!25}Scalar Product\\
+			    \cellcolor{blue!25} \footnotesize Distributivity w.r.t.$\OpB$ (\ref{scalarDistributivityB}) & \tiny\cellcolor{yellow!25} distributivity w.r.t. $\big(\OpB\big)$  \\
+			   \hline
+			    \multicolumn{2}{l}{\footnotesize \cellcolor{blue!25} Scalar Multiplication Compatibility w.r.t  $\big(\OpA\big)$ (\ref{scalarcompat})}\\
+			   \hline
+			\end{tabular}
+			\vfill
+		\end{minipage}
+		%
+		\hspace{1cm}
+		%
+		\begin{minipage}[c]{0,5\textwidth}	
+			\begin{tabular}{|l|c|} %Algebra over Field
+			  \hline
+			  \multicolumn{2}{c}{\cellcolor{green!25}Algebra over Field $\KField$} \\
+			  \hline
+			    \cellcolor{blue!25} \footnotesize Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} \footnotesize Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} \footnotesize Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} \footnotesize Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} \footnotesize Commutativity& \multirow{-5}{*}{\tiny\cellcolor{yellow!25}Abelian Group$\big(\OpB\big)$} \\
+			   \hline
+			    \cellcolor{blue!25} \footnotesize Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{red!25} \footnotesize Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{red!25} \footnotesize Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{red!25} \footnotesize Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{red!25} \footnotesize Commutativity& \multirow{-5}{*}{\tiny\cellcolor{yellow!25} Magma $\big(\OpA\big)$} \\
+			  \hline
+			  	\cellcolor{blue!25} \footnotesize Left Distributivity&  \tiny\cellcolor{yellow!25}Distributivity\\
+			    \cellcolor{blue!25} \footnotesize Right Distributivity & \tiny\cellcolor{yellow!25} $\big(\OpA\big)$ w.r.t. $\big(\OpB\big)$  \\
+			   \hline
+			  \hline
+			     \cellcolor{blue!25} \footnotesize SP Multiplication (\ref{scalarmulti})&  \tiny\cellcolor{yellow!25}Scalar Product\\
+			    \cellcolor{blue!25} \footnotesize SP Identity(\ref{scalaridentity}) & \tiny\cellcolor{yellow!25} Compatibility  \\
+			   \hline 
+			    \cellcolor{blue!25} \footnotesize Distributivity w.r.t. $\OpA$ (\ref{scalarDistributivityA})&  \tiny\cellcolor{yellow!25}Scalar Product\\
+			    \cellcolor{blue!25} \footnotesize Distributivity w.r.t.$\OpB$ (\ref{scalarDistributivityB}) & \tiny\cellcolor{yellow!25} distributivity w.r.t. $\big(\OpB\big)$  \\
+			   \hline
+			    \multicolumn{2}{l}{\footnotesize \cellcolor{blue!25} Scalar Multiplication Compatibility w.r.t  $\big(\OpA\big)$ (\ref{scalarcompat})}\\
+			   \hline
+			\end{tabular}
+			\vfill
+			\begin{tabular}{|l|c|} %Unital Algebra over Field
+			  \hline
+			  \multicolumn{2}{c}{\cellcolor{green!25}Unital Algebra over $\KField$} \\
+			  \hline
+			    \cellcolor{blue!25} \footnotesize Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} \footnotesize Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} \footnotesize Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} \footnotesize Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{blue!25} \footnotesize Commutativity& \multirow{-5}{*}{\tiny\cellcolor{yellow!25}Abelian Group$\big(\OpB\big)$} \\
+			   \hline
+			    \cellcolor{blue!25} \footnotesize Closure& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} \footnotesize Associativity& \cellcolor{yellow!25}  \\
+			    \cellcolor{blue!25} \footnotesize Identity& \cellcolor{yellow!25} \\
+			    \cellcolor{red!25} \footnotesize Inverse& \cellcolor{yellow!25} \\
+			    \cellcolor{red!25} \footnotesize Commutativity& \multirow{-5}{*}{\tiny\cellcolor{yellow!25} Monoid $\big(\OpA\big)$} \\
+			  \hline
+			  	\cellcolor{blue!25} \footnotesize Left Distributivity&  \tiny\cellcolor{yellow!25}Distributivity\\
+			    \cellcolor{blue!25} \footnotesize Right Distributivity & \tiny\cellcolor{yellow!25} $\big(\OpA\big)$ w.r.t. $\big(\OpB\big)$  \\
+			   \hline
+			  \hline
+			     \cellcolor{blue!25} \footnotesize SP Multiplication (\ref{scalarmulti})&  \tiny\cellcolor{yellow!25}Scalar Product\\
+			    \cellcolor{blue!25} \footnotesize SP Identity(\ref{scalaridentity}) & \tiny\cellcolor{yellow!25} Compatibility  \\
+			   \hline 
+			    \cellcolor{blue!25} \footnotesize Distributivity w.r.t.$\OpA$ (\ref{scalarDistributivityA})&  \tiny\cellcolor{yellow!25}Scalar Product\\
+			    \cellcolor{blue!25} \footnotesize Distributivity w.r.t.$\OpB$ (\ref{scalarDistributivityB}) & \tiny\cellcolor{yellow!25} distributivity w.r.t. $\big(\OpB\big)$  \\
+			   \hline
+			    \multicolumn{2}{l}{\footnotesize \cellcolor{blue!25} Scalar Multiplication Compatibility w.r.t  $\big(\OpA\big)$ (\ref{scalarcompat})}\\
+			   \hline
+			\end{tabular}
+			\vfill
+		\end{minipage}
+		%
+	\end{minipage}	
+%=========================================================================#
+
+%#########################################################################%
+
+\end{landscape}
+
+%#########################################################################%
+\end{document}
+%#########################################################################%

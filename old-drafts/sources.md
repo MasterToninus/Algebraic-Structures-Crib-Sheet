@@ -1,0 +1,1 @@
+https://www.facebook.com/Mathematical.Mathematics.Memes/photos/d41d8cd9/503329886675680/?paipv=0&eav=AfbuDp4-ZVHGE6cnqN4qLzbJb67VaWB9tUxBBWa9eJDP7oVxB-6MY2_LNIrVUcdhdkA&_rdr
